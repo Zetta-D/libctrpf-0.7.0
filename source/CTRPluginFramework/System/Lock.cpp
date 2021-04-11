@@ -14,7 +14,7 @@ namespace CTRPluginFramework
 
     Lock::Lock(Mutex &mutex) : _type(3), _mutex(mutex)
     {
-        Mutex::Lock(mutex._lock);
+        this->_mutex->Lock();
     }
 
     Lock Lock::~Lock(void)
@@ -28,7 +28,7 @@ namespace CTRPluginFramework
                 RecursiveLock_Unlock(this->_rlock);
                 break;
             case 3:
-                Mutex::Unlock();
+                this->_mutex->Unlock();
                 break;
         }
     }
